@@ -127,8 +127,9 @@ public class FhirAuthService {
    */
   public String extractPatient(String serverUri, OAuthTokenResponse tokenResponse) {
     String patient = null;
-    // A special logic for Logica Health as it does not support user scope yet:
-    if ("api.logicahealth.org".equals(URI.create(serverUri)
+    // A special logic for CMS Blue Button as it does not support user scope yet:
+    //CK - changed this to sandbox.bluebutton.cms.gov 
+    if ("sandbox.bluebutton.cms.gov".equals(URI.create(serverUri)
         .getHost())) {
       patient = tokenResponse.getPatient();
     } else {
@@ -156,6 +157,13 @@ public class FhirAuthService {
     }
     HttpHeaders headers = new HttpHeaders();
     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+    //ChrsK Add Basic authentication here based on client_secret
+     headers.setBasicAuth(payer.getClientId(), payer.getClientSecret());
+    // 
+    //
+    
+
     RequestDto requestDto = createTokenRequestDto(tokenUri, headers, requestBody);
 
     Long payerId = payer.getId();
@@ -168,6 +176,7 @@ public class FhirAuthService {
       ResponseEntity<OAuthTokenResponse> tokenEntity = restTemplate.postForEntity(tokenUri,
           new HttpEntity<>(requestBody, headers), OAuthTokenResponse.class);
       stopWatch.stop();
+
       OAuthTokenResponse tokenResponseBody = tokenEntity.getBody();
       modelMapper.map(tokenEntity, requestDto);
       requestDto.setRequestDuration(stopWatch.getTotalTimeMillis());

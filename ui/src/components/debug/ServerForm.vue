@@ -7,7 +7,7 @@ import { validatePayer } from "@/api/api";
 import { NewPayerPayload } from "@/types";
 import { PayerModule } from "@/store/modules/payer";
 
-const DEFAULT_SERVER = { name: "", fhirServerUri: "", clientId: "", scope: "openid fhirUser offline_access user/*.read", tokenUri: "", authorizeUri: "" };
+const DEFAULT_SERVER = { name: "", fhirServerUri: "", clientId: "", clientSecret: "", scope: "openid fhirUser offline_access user/*.read", tokenUri: "", authorizeUri: "" };
 
 export default defineComponent({
 	name: "ServerForm",
@@ -38,6 +38,7 @@ export default defineComponent({
 				name: [{ required: true, message: "This field is required", trigger: "change" }],
 				fhirServerUri: [{ required: true, message: "This field is required", trigger: "change" }],
 				clientId: [{ required: true, message: "This field is required", trigger: "change" }],
+				clientSecret: [{ required: true, message: "This field is required", trigger: "change" }],
 				scope: [{ required: true, message: "This field is required", trigger: "change" }]
 			},
 			isSaving: false,
@@ -271,6 +272,14 @@ export default defineComponent({
 					v-model="form.clientId"
 					:disabled="disableField"
 				/>
+			</el-form-item>
+			<el-form-item label="Client Secret"
+				prop="clientSecret"
+			>
+			<el-input
+					v-model="form.clientSecret"
+					:disabled="disableField"
+			/>
 			</el-form-item>
 			<el-form-item
 				label="Scope"

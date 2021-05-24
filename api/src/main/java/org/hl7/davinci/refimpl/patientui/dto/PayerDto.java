@@ -23,6 +23,11 @@ public class PayerDto {
   private String fhirServerUri;
   @NotEmpty
   private String clientId;
+
+  //CK add clientSecret
+  @NotEmpty
+  private String clientSecret;
+
   @NotEmpty
   private String scope;
   private String authorizeUri;

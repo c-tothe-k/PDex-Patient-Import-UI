@@ -2,6 +2,7 @@ export type NewPayerPayload = {
 	name: string,
 	fhirServerUri: string,
 	clientId: string,
+	clientSecret: string,
 	scope: string,
 	authorizeUri?: string,
 	tokenUri?: string
@@ -107,6 +108,7 @@ export type Payer = {
 	id: number,
 	authorizeUri?: string,
 	clientId?: string,
+	clientSecret?: string,
 	fhirServerUri?: string,
 	lastImported?: string | null,
 	name?: string,

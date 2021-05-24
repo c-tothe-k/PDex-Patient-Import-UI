@@ -28,6 +28,11 @@ public class Payer extends BaseEntity {
   private String fhirServerUri;
   @Column(nullable = false)
   private String clientId;
+
+  //CK Add clientSecret property
+  @Column(nullable = false)
+  private String clientSecret;
+
   @Column(nullable = false)
   private String scope;
   @Column

@@ -87,6 +87,7 @@ export default defineComponent({
 							name: item.name,
 							fhirServerUri: item.fhirServerUri,
 							clientId: item.clientId,
+							clientSecret: item.clientSecret,
 							scope: item.scope,
 							authorizeUri: item.authorizeUri,
 							tokenUri: item.tokenUri
