@@ -1,6 +1,8 @@
+# My Changes
+I'm trying to get this to work with the v2 CMS Blue Button sandbox, and learning as I go.
+
 PDex Patient Import UI Reference Implementation
 ===============
-[![Build Status](https://travis-ci.org/HL7-DaVinci/PDex-Patient-Import-UI.svg?branch=master)](https://travis-ci.org/github/HL7-DaVinci/PDex-Patient-Import-UI)
 
 Da Vinci reference implementation for the Patient Import UI use case.
 
